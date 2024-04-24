@@ -1,25 +1,25 @@
 import React from "react";
 import { useState, useEffect } from "react";
-function AllCart({ idShoppingCart, DataProducts }) {
+
+function AllCart({ idShoppingCart, products }) {
   const [shoppingCart, SetShoppingCart] = useState([]);
 
-  const _products = DataProducts.product;
-  const cart = idShoppingCart.map((item) => item);
-  const filterItem = _products.filter((item) =>
+  const filterItem = products.filter((item) =>
     idShoppingCart.includes(item.id)
   );
-
-  
-  
-
+  console.log(filterItem);
+  // console.log(amountOfProducts);
   //check array with another array
 
   return (
     <>
       <h1 className="container text-xl font-black">All Cart</h1>
       <div className="max-w-[1200px] m-auto p-3">
-        {filterItem.map((item) => (
-          <div className="flex flex-col gap-[20px] md:flex-row justify-between items-center w-full shadow-lg p-3 rounded-xl">
+        {filterItem.map((item, index, array) => (
+          <div
+            className="flex flex-col gap-[20px] md:flex-row justify-between items-center w-full shadow-lg p-3 rounded-xl"
+            key={index}
+          >
             <div>
               <img
                 src={item.img}
@@ -37,7 +37,7 @@ function AllCart({ idShoppingCart, DataProducts }) {
               <button className=" bg-orange-500 rounded-full w-7 h-7 text-white font-bold hover:bg-orange-700">
                 +
               </button>
-              <p>จำนวนสินค้า : </p>
+              <p>จำนวนสินค้า : {array[item.id]}</p>
               <button className=" bg-red-500 rounded-full w-7 h-7 text-white font-bold hover:bg-red-700">
                 -
               </button>

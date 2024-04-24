@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./Components/Header/Header";
@@ -10,10 +10,15 @@ import Footer from "./Components/Footer";
 import AllCart from "./Components/AllCart";
 
 function App() {
-  const [count, setCount] = useState(0);
   // const [idProduct, SetIdProduct] = useState("");
   const [idShoppingCart, SetIdShoppingCart] = useState([]);
+  const [products, SetProducts] = useState([]);
+ 
+  useEffect(() => {
+   SetProducts(DataProducts.product);
+  }, [products]);
 
+  
   return (
     <>
       <BrowserRouter>
@@ -24,7 +29,7 @@ function App() {
             path="/products"
             element={
               <Products
-                DataProducts={DataProducts}
+              products={products}
                 SetIdShoppingCart={SetIdShoppingCart}
                 idShoppingCart={idShoppingCart}
               />
@@ -36,7 +41,7 @@ function App() {
             element={
               <AllCart
                 idShoppingCart={idShoppingCart}
-                DataProducts={DataProducts}
+                products={products}
               />
             }
           ></Route>
