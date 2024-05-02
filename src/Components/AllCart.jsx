@@ -15,7 +15,7 @@ function AllCart({ addToCart, onRemove }) {
       <div className="container">
         <h1 className=" text-xl md:text-2xl font-black">ตะกร้าสินค้า</h1>
         <h2 className="container text-base font-medium md:text-2xl">
-          ราคาสิ้นค้าทั้งหมด : {total.toLocaleString()}
+          ราคาสิ้นค้าทั้งหมด : {total.toLocaleString()} บาท
         </h2>
       </div>
 
@@ -34,9 +34,9 @@ function AllCart({ addToCart, onRemove }) {
             </div>
             <div className="flex  flex-col justify-center items-center">
               <p className="md:font-ms font-base">
-                ชื่อสินค้า : {item.product_name}
+             {item.product_name}
               </p>
-              <p className="md:font-ms font-base">ราคา: {item.price}</p>
+              <p className="md:font-ms font-base">ราคา: {item.price} บาท</p>
             </div>
             <div className="flex gap-5 items-center">
               <button
@@ -63,7 +63,7 @@ function AllCart({ addToCart, onRemove }) {
               </button>
             </div>
             <p className="md:font-ms font-base">
-              ราคา : {(item.quantity * item.price).toLocaleString()}
+              ราคา : {(item.quantity * item.price).toLocaleString()} บาท
             </p>
             <button
               className="text-xs lg:text-base bg-red-600 rounded-xl p-2 text-white font-bold hover:bg-red-900"
